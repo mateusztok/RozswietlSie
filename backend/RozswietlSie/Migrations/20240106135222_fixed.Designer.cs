@@ -12,8 +12,8 @@ using RozswietlSie;
 namespace RozswietlSie.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240105200004_firstMigration")]
-    partial class firstMigration
+    [Migration("20240106135222_fixed")]
+    partial class @fixed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
