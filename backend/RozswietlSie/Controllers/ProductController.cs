@@ -28,7 +28,7 @@ namespace RozswietlSie.Controllers
             }
         }
 
-        [HttpGet("GetProductById")]
+        [HttpGet("GetProductById/{id}")]
         public IActionResult GetProductById(int id)
         {
             try

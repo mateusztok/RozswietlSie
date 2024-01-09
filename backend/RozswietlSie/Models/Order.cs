@@ -1,4 +1,6 @@
-﻿namespace RozswietlSie.Models
+﻿using System.Text.Json.Serialization;
+
+namespace RozswietlSie.Models
 {
         public class Order
         {
@@ -29,7 +31,8 @@
             public string HouseNumber { get; set; }
             public decimal OrderTotal { get; set; }
             public bool OrderStatus { get; set; }  //0-złożone 1-wysłane
-            public ICollection<OrderItem> OrderItems { get; set; }
+            //[JsonIgnore]
+            public ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
     }
 
 }
