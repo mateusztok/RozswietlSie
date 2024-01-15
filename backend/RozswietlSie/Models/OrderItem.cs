@@ -1,4 +1,6 @@
-﻿namespace RozswietlSie.Models
+﻿using System.Text.Json.Serialization;
+
+namespace RozswietlSie.Models
 {
     public class OrderItem
     {
@@ -16,6 +18,7 @@
         public float Total { get; set; }      
         public int OrderId { get; set; }
         public Product Product { get; set; }
+        [JsonIgnore]
         public Order Order { get; set; }
     }
 }

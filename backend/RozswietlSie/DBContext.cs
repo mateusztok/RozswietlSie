@@ -1,21 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RozswietlSie.Models;
 
 
 namespace RozswietlSie
 {
     public class DBContext: DbContext
-        {
-            public DBContext(DbContextOptions<DBContext> options)
+    {
+        public DBContext(DbContextOptions<DBContext> options)
                 : base(options)
             {
-
-            }
-
-            protected override void OnModelCreating(ModelBuilder modelBuilder)
+        }
+       
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
-
-                modelBuilder.Entity<Product>()
+            modelBuilder.Entity<MyAdmin>()
+                .HasKey(x => x.Id);
+            modelBuilder.Entity<Product>()
                     .HasKey(x => x.Id);
                 modelBuilder.Entity<Order>()
                     .HasKey(x => x.Id);
@@ -40,6 +42,7 @@ namespace RozswietlSie
             public DbSet<Product> Products { get; set; }
             public DbSet<Order> Orders { get; set; }
             public DbSet<OrderItem> OrderDetails { get; set; }
+            public DbSet<MyAdmin> MyAdmin { get; set; }
         }
     }
 

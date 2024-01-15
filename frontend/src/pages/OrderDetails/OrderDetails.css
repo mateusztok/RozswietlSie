@@ -1,0 +1,11 @@
+.table_button{
+    display: flex;
+    width: 95%;
+}
+p{
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+.table{
+    margin-top: 10px;
+}
