@@ -59,6 +59,11 @@ namespace RozswietlSie.Controllers
         {
             try
             {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
                 var id = _productService.Create(product);
                 return Created($"/api/product/{id}", product);
             }
@@ -73,6 +78,11 @@ namespace RozswietlSie.Controllers
         {
             try
             {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
                 var updatedProduct = _productService.Update(id, product);
                 return Ok(updatedProduct);
             }
@@ -87,6 +97,11 @@ namespace RozswietlSie.Controllers
         {
             try
             {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
                 var deletedProductId = _productService.Delete(id);
                 return Ok(deletedProductId);
             }

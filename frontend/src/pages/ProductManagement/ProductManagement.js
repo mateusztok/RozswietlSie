@@ -14,7 +14,8 @@ const ProductManagement = () => {
 
     const fetchProducts= () => {
         const queryParams = new URLSearchParams(filter).toString();
-        fetch(`${process.env.REACT_APP_API_URL}/api/Product/GetFiltredProducts?${queryParams}`)
+        fetch(`${process.env.REACT_APP_API_URL}/api/Product/GetFiltredProducts?${queryParams}`,{
+          'credentials': 'include' ,})
           .then((response) => response.json())
           .then((data) => setProducts(data))
           .catch((error) => console.log(error));
@@ -43,6 +44,7 @@ const ProductManagement = () => {
               onClick: () => {
                 fetch(`${process.env.REACT_APP_API_URL}/api/Product/DeleteProduct/${productId}`, {
                   method: 'DELETE',
+                  'credentials': 'include' ,
                 })
                   .then((response) => {
                     if (response.ok) {
@@ -85,7 +87,7 @@ const ProductManagement = () => {
             field: 'actions',
             headerName: 'Akcje',
             sortable: false,
-            width: 100,
+            width: 130,
             renderCell: (params) => (
                 <div className='buttons'>
                     <button className='button1' onClick={(event) => handleEditClick(event, params.row.id)}>Edytuj</button>

@@ -38,6 +38,7 @@ const ProductEdit = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
+            'credentials': 'include' ,
             body: JSON.stringify(editedProduct),
         })
         .then(response => response.json())

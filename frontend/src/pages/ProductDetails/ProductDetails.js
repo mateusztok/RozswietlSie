@@ -6,6 +6,8 @@ import './ProductDetails.css';
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState();
+    
+    const [isAddedToCart, setIsAddedToCart] = useState(false);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/api/Product/GetProductById/${id}`)
@@ -13,6 +15,31 @@ const ProductDetails = () => {
             .then(data => setProduct(data))
             .catch(error => console.log(error));
     }, [id]);
+
+    const handleAddToCart = () => {
+        fetch(`${process.env.REACT_APP_API_URL}/api/v1/shoppingCart/ShoppingCart/AddProductToShoppingCart/${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            
+             },
+             'credentials': 'include' 
+        })
+        .then(response => response.json())
+        .then(data => {
+            
+                console.log('Product added to cart:', data);
+                setIsAddedToCart(true);
+            setTimeout(() => {
+                setIsAddedToCart(false);
+            }, 3000);
+            console.log('Product added to cart:', data);
+        })
+        .catch(error => {
+            console.error('Error adding product to cart:', error);
+        });
+    };
+    
 
     if (!product) {
         return <h1>Loading...</h1>
@@ -34,8 +61,11 @@ const ProductDetails = () => {
                     <div className="price">
                         <h2>{product.price} PLN</h2>
                         Dostępność: {product.isAvailable ? 'Dostępny' : 'Niedostępny'}
-                        <button className="addToCartBtn">Dodaj do koszyka</button>
-
+                        <button className="addToCartBtn" onClick={handleAddToCart}>
+                            Dodaj do koszyka
+                        </button>
+                        {isAddedToCart && <div className="addedToCartMessage">Produkt został dodany do koszyka!</div>}
+                  
                     </div>
                 </div>
             </div>

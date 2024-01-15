@@ -4,10 +4,10 @@ namespace RozswietlSie.Models
 {
         public class Order
         {
-        public Order(int id, DateTime date, string firstName, string lastName, string email, string phone, string city, string zipCode, string street, string houseNumber, decimal orderTotal, bool orderStatus)
+        public Order(int id, string firstName, string lastName, string email, string phone, string city, string zipCode, string street, string houseNumber, decimal orderTotal)
         {
             Id = id;
-            Date = date;
+            Date = DateTime.Now;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -17,10 +17,10 @@ namespace RozswietlSie.Models
             Street = street;
             HouseNumber = houseNumber;
             OrderTotal = orderTotal;
-            OrderStatus = orderStatus;
+            OrderStatus = false;
         }
             public int Id { get; set; }
-            public DateTime Date { get; set; }
+            public DateTime? Date { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string Phone { get; set; }
@@ -30,8 +30,7 @@ namespace RozswietlSie.Models
             public string Street { get; set; }
             public string HouseNumber { get; set; }
             public decimal OrderTotal { get; set; }
-            public bool OrderStatus { get; set; }  //0-złożone 1-wysłane
-            //[JsonIgnore]
+            public bool? OrderStatus { get; set; }  //0-złożone 1-wysłane
             public ICollection<OrderItem>? OrderItems { get; set; } = new List<OrderItem>();
     }
 

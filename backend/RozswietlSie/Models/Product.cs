@@ -4,8 +4,8 @@ namespace RozswietlSie.Models
 {
     public class Product
     {
-        public Product(int id, string name, float price, string description, string imageUrl, bool isAvailable = true) { 
-            Id = id;
+        public Product(string name, float price, string description, string imageUrl, bool isAvailable = true) { 
+            Id = 0;
             Name = name;
             Price = price;
             Description = description;
@@ -21,7 +21,7 @@ namespace RozswietlSie.Models
         public string ImageUrl { get; set; }
         public bool IsAvailable { get; set; } // 0 -niedostępny 1-dostępny 
         [JsonIgnore]
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public ICollection<OrderItem>? OrderItems { get; set; }
     }
 
 }

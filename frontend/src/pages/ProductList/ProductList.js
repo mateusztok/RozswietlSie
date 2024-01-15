@@ -6,17 +6,24 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const columns = [
-    { field: 'id', headerName: 'ID'},
     { field: 'name', headerName: 'Nazwa',flex: 1, },
     { field: 'price', headerName: 'Cena'},
     {
         field: 'imageUrl', headerName: 'Zdjęcie', renderCell: (params) => (
-          <img src={`${process.env.REACT_APP_API_URL}/images/${params.value}`} alt={params.row.name} style={{ height: 'auto' }} />
+          <img src={`${process.env.REACT_APP_API_URL}/images/${params.value}`} 
+          alt={params.row.name} 
+          style={{ height: 145, width: 'auto',  borderRadius: '30px' }}
+          />
         ),
         width: 200, 
       },
       
-    { field: 'isAvailable', headerName: 'Dostępność' },
+      {
+        field: 'availability',
+        headerName: 'Dostępność',
+        valueGetter: (params) => (params.value ?  'Niedostępny' : 'Dostępny' ),
+        width: 150,
+    },
 ];
 
 const ProductList = () => {

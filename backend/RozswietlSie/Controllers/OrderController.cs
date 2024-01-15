@@ -21,6 +21,11 @@ namespace RozswietlSie.Controllers
         {
             try
             {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
                 var orders = _orderService.GetAll();
             return Ok(orders);
             }
@@ -35,6 +40,11 @@ namespace RozswietlSie.Controllers
         {
             try
             {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
                 var orders = _orderService.GetOrderById(id);
                 var jsonOptions = new JsonSerializerOptions
                 {
@@ -63,14 +73,14 @@ namespace RozswietlSie.Controllers
                     : JsonSerializer.Deserialize<List<ShoppingCartItem>>(sessionItems);
 
                 
-                var id = _orderService.Create(order, shoppingItems);
+                var createdOrder = _orderService.Create(order, shoppingItems);
 
                 if (HttpContext.Session != null)
                 {
                     HttpContext.Session.Clear();
                 }
                
-                return Created($"/api/order/GetOrderById/{id}", null);
+                return Created($"/api/order/GetOrderById/{createdOrder.Id}", createdOrder);
             }
             catch
             {
@@ -82,6 +92,11 @@ namespace RozswietlSie.Controllers
         {
             try
             {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
                 var updatedOrder = _orderService.Update(id, order);
                 return Ok(updatedOrder);
             }
@@ -97,7 +112,30 @@ namespace RozswietlSie.Controllers
 
             try
             {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
                 var deletedOrderId = _orderService.Delete(id);
+                return Ok(deletedOrderId);
+            }
+            catch
+            {
+                return NotFound();
+            }
+        }
+        [HttpPut("ChangeOrderStatus/{id}")]
+        public IActionResult OrderStatus(int id)
+        {
+            try
+            {
+                var userRole = HttpContext.Session.GetString("UserRole");
+                if (string.IsNullOrEmpty(userRole) || userRole != "Admin")
+                {
+                    return Forbid();
+                }
+                var deletedOrderId = _orderService.ChangeOrderStatus(id);
                 return Ok(deletedOrderId);
             }
             catch

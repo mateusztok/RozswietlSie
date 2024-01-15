@@ -1,4 +1,5 @@
-﻿using RozswietlSie.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using RozswietlSie.Models;
 
 namespace RozswietlSie.IServices
 {
@@ -6,8 +7,9 @@ namespace RozswietlSie.IServices
     {
         IEnumerable<Order> GetAll();
         Order GetOrderById(int id);
-        int Create(Order order, IEnumerable<ShoppingCartItem> shoppingCart);
+        Order Create(Order order, IEnumerable<ShoppingCartItem> shoppingCart);
         Order Update(int id, Order order);
         int Delete(int id);
+        int ChangeOrderStatus(int id);
     }
 }

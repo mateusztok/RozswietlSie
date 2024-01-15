@@ -1,0 +1,35 @@
+.table{
+    width: 90%;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+}
+
+.button1{
+    background-color: rgb(239, 236, 236);
+    width: 250%;
+    margin-top: 15%;
+    padding: 30%;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+.button2{
+    background-color: rgb(239, 236, 236);
+    width: 100%;
+    margin-top: 5%;
+    padding: 10%;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.button1:hover {
+    background-color: lightgrey;
+}
+

@@ -12,8 +12,6 @@ namespace Zajęcia2_MVC.IRepository
         {
             _dBContext = dBContext;
         }
-
-
         public IEnumerable<Product> GetAll()
         {
             var products = _dBContext.Products.ToList();
@@ -39,17 +37,16 @@ namespace Zajęcia2_MVC.IRepository
         }
         public Product GetProductById(int id)
         {
+
             Product product = _dBContext.Products.Find(id) ?? throw new Exception("Not Found at " + id);
             return product;
         }
-
         public int Create(Product product)
         {
             _dBContext.Products.Add(product);
             _dBContext.SaveChanges();
             return product.Id;
         }
-
         public int Update(int id, Product updatedProduct)
         {
             var existingProduct = _dBContext.Products.Find(id) ?? throw new Exception("Not Exist");
@@ -58,7 +55,6 @@ namespace Zajęcia2_MVC.IRepository
             _dBContext.SaveChanges();
             return updatedProduct.Id;
         }
-
         public int? Delete(int id)
         {
             Product product = _dBContext.Products.Find(id) ?? throw new Exception("Not Exist");
