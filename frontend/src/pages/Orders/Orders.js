@@ -12,35 +12,34 @@ const Orders = () => {
     return formattedDate;
   };
   const columns = [
-    { field: 'id', headerName: 'ID'},
-    {field: 'date', 
-    headerName: 'Data', 
-    width: 172,
-    valueGetter: (params) => formatDate(params.row.date) },
-    { field: 'firstName', headerName: 'Imię' , width: 70},
-    { field: 'lastName', headerName: 'Nazwisko' , width: 70},
-    { field: 'email', headerName: 'Email' , width: 70},
-    { field: 'city', headerName: 'Miasto' , width: 70},
-    { field: 'street', headerName: 'Ulica' , width: 70},
-    { field: 'orderTotal', headerName: 'Kwota' , width: 70},{ 
-        field: 'orderStatus', 
-        headerName: 'Status' , 
-        width: 100,
-        valueGetter: (params) => params.row.orderStatus ? 'wysłane' : 'w realizacji'
+    { field: 'id', headerName: 'ID', width: 60 },
+    { field: 'date', headerName: 'Data', valueGetter: (params) => formatDate(params.row.date) },
+    { field: 'firstName', headerName: 'Imię' },
+    { field: 'lastName', headerName: 'Nazwisko' },
+    { field: 'email', headerName: 'Email' },
+    { field: 'city', headerName: 'Miasto' },
+    { field: 'street', headerName: 'Ulica' },
+    { field: 'orderTotal', headerName: 'Kwota' },
+    {
+        field: 'orderStatus',
+        headerName: 'Status',
+        valueGetter: (params) => (params.row.orderStatus ? 'wysłane' : 'w realizacji'),
     },
     {
         field: 'actions',
         headerName: 'Akcje',
         sortable: false,
-        width: 150,
+        width: 140,
         renderCell: (params) => (
             <div className='buttons'>
-                <button className='button1' onClick={(event) => handleChangeStatusClick(event, params.row)}>Zmień status</button>
+                <button className='button1' onClick={(event) => handleChangeStatusClick(event, params.row)}>
+                    Zmień status
+                </button>
             </div>
         ),
-        
     },
 ];
+
 
 
     const [orders, setOrders] = useState([]);
@@ -85,11 +84,13 @@ const Orders = () => {
             <div className='table'>
                 {orders.length > 0 ? (
                     <DataGrid
+                        autoWidth
                         onRowClick={(params) => handleRowClick(params.row)}
                         rows={orders}
                         columns={columns}
                         pageSizeOptions={[5, 10]}
                         rowHeight={50} 
+                        
                     />
                     ) : (
                         <h1>Brak zamówień</h1>

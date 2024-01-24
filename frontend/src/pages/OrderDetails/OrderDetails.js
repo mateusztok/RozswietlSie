@@ -42,7 +42,7 @@ const OrderDetails = () => {
       productId: orderItem.Product.Id,
       productName: orderItem.Product.Name,
       img: orderItem.Product.ImageUrl,
-      productPrice: orderItem.Product.Price,
+      productPrice: orderItem.Total/orderItem.Quantity,
       quantity: orderItem.Quantity,
       total: orderItem.Total,
     })) || [];
@@ -58,11 +58,24 @@ const OrderDetails = () => {
 
     return (
       <div className="container">
-        <div className="name">
-        <p>
-  {formatDate(order.Date)} Imię: {order.FirstName} Nazwisko: {order.LastName} {order.Email} Miato: {order.City} Ulica: {order.Street} Suma: {order.OrderTotal} PLN  Status: {order.OrderStatus==true?"Wysłane":"W realizacji"}
-</p>
-        </div>
+        <div>
+       <div className="name">
+       <div className="date-column">
+        <p>{formatDate(order.Date)}</p>
+        <p>Imię: {order.FirstName}</p>
+        <p>Nazwisko: {order.LastName}</p>
+    </div>
+    <div className="date-column">
+      <p>Email: {order.Email}</p> 
+      <p> Miasto: {order.City}</p>
+      <p> Ulica: {order.Street} </p>
+    </div>
+    <div className="date-column">
+      <p>Suma: {order.OrderTotal} PLN </p>
+      <p> Status: {order.OrderStatus ? "Wysłane" : "W realizacji"}</p>
+    </div>
+    </div>
+</div>
         <div className="table_button">
           <div className="table">
             {rows.length > 0 ? (

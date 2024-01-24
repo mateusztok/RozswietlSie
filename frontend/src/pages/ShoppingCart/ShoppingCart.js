@@ -36,8 +36,8 @@ const ShoppingCart = () => {
       }
     }
 
-    const handleRowClick = (row) => {
-        navigate(`/products/${row.productId}`);
+    const handleRowClick = (params) => {
+        navigate(`/products/${params.row.product.id}`);
     }
 
     const handleDeleteClick = (event, id) => {
@@ -51,13 +51,16 @@ const ShoppingCart = () => {
               onClick: () => {
                 fetch(`${process.env.REACT_APP_API_URL}/api/v1/shoppingCart/ShoppingCart/DeleteProductFromShoppingCart/${id}`, {
                   method: 'DELETE',
+                  'credentials': 'include' 
                 })
                   .then((response) => {
                     if (response.ok) {
-                        const updatedCart = shoppingCart.filter(item => item.product.id !== id);
-                                setShoppingCart(updatedCart);
+                      const updatedCart = shoppingCart.filter(item => item.product.id !== id);
+                      setShoppingCart(updatedCart);
+                      const deletedProduct = shoppingCart.find(item => item.product.id === id);
+                      const newOrderTotal = orderTotal - deletedProduct.total;
+                      setOrderTotal(newOrderTotal);
                       console.log(`Product with ID ${id} deleted successfully`);
-                  
                     } else {
                       console.error(`Failed to delete product with ID ${id}`);
                     }
@@ -110,7 +113,7 @@ const ShoppingCart = () => {
             width: 80,
             renderCell: (params) => (
                 <div className='buttons'>
-                    <button className='button3' onClick={(event) => handleDeleteClick(event, params.row.product.id)}>Usuń</button>
+                    <button className='button2' onClick={(event) => handleDeleteClick(event, params.row.product.id)}>Usuń</button>
                 </div>
             ),
             
@@ -136,7 +139,7 @@ const ShoppingCart = () => {
             <h2>Suma zamówienia:</h2>
             <h3>{orderTotal} PLN</h3>
             
-                    <button className='button2' onClick={(event) => handleCreateOrderClick()}>Złóż zamówienie</button>
+                    <button className='button1' onClick={(event) => handleCreateOrderClick()}>Złóż zamówienie</button>
               
             </div>
       </Box></div>

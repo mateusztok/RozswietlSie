@@ -67,27 +67,27 @@ const AddNewProduct = () => {
 
     return ( 
         <div className="container">
-            <div className="name">  
-                <h1>{product.name}</h1>
-            </div>
             <div className="content">           
                 <div className="edit-form">
                     <form className="forms">
                         <label>Nazwa:</label>
                         <input
+                        className="custom-input"
                             type="text"
                             name="name"
                             value={product.name}
                             onChange={(e) => handleInputChange('name', e.target.value)}
                         />
                         <label>Opis:</label>
-                        <textarea
+                        <input
+                        className="custom-input"
                             name="description"
                             value={ product.description}
                             onChange={(e) => handleInputChange('description', e.target.value)}
                         />
                         <label>Cena:</label>
                         <input
+                        className="custom-input1"
                             type="number"
                             name="price"
                             value={ product.price}  
@@ -96,7 +96,7 @@ const AddNewProduct = () => {
                         
                         <label>Dostępność:</label>
                         <Select
-                            className="select"
+                            className="custom-input"
                             label="Dostępność"
                             name="isAvailable"
                             value={product.isAvailable || 0}

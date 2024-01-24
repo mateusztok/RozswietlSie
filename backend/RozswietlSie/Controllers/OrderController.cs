@@ -75,11 +75,12 @@ namespace RozswietlSie.Controllers
                 
                 var createdOrder = _orderService.Create(order, shoppingItems);
 
+
                 if (HttpContext.Session != null)
                 {
-                    HttpContext.Session.Clear();
+                    HttpContext.Session.Remove("SessionItemList");
                 }
-               
+
                 return Created($"/api/order/GetOrderById/{createdOrder.Id}", createdOrder);
             }
             catch

@@ -109,14 +109,17 @@ export const Login = ({ setIsLoggedIn }) => {
                     <form className="forms">
                         <label>Login:</label>
                         <input
+                        className="custom-input"
                             type="text"
                             name="userName"
                             value={login.userName}
                             onChange={(e) => handleInputChange('userName', e.target.value)}
                         />
                         <label>Hasło:</label>
-                        <textarea
+                        <input
+                        className="custom-input"
                             name="password"
+                            type="password"
                             value={login.password}
                             onChange={(e) => handleInputChange('password', e.target.value)}
                         />

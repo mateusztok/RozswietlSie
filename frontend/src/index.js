@@ -28,7 +28,6 @@ const App = () => {
         { path: '/', element: <Home /> },
         { path: '/products', element: <ProductList /> },
         { path: '/products/:id', element: <ProductDetails /> },
-        { path: '/about', element: <div>O nas</div> },
         { path: '/shoppingCart', element: <ShoppingCart /> },
         { path: '/login', element: <Login setIsLoggedIn={setIsLoggedIn} /> },
         { path: '/orderForm', element: <OrderForm /> },
