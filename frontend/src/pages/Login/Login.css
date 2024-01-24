@@ -1,0 +1,15 @@
+.button{
+background: linear-gradient(to right, #f037e163 ,#c050fc45 15%, #eaa2f944 75%,#9d21e04e);
+}
+
+.custom-input {
+    border: 1.5px solid #000000;
+    /* background: linear-gradient(to right, #f037e1b3 ,#c050fc6f 15%, #eaa2f99d 75%,#9d21e09b); */
+    color: #000000; /* Kolor tekstu */
+    padding: 8px; /* Dodatkowy padding, aby poprawić wygląd */
+    margin-bottom: 16px; /* Dodatkowy margines na dole, aby oddzielić od kolejnego elementu */
+  }
+  .custom-input {
+    width: 100%;
+    height: 33px;
+}

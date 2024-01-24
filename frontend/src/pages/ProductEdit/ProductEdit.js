@@ -79,7 +79,7 @@ const ProductEdit = () => {
                             onChange={(e) => handleInputChange('name', e.target.value)}
                         />
                         <label>Opis:</label>
-                        <textarea
+                        <input
                             name="description"
                             value={editedProduct.description || product.description}
                             onChange={(e) => handleInputChange('description', e.target.value)}

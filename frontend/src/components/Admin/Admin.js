@@ -5,8 +5,8 @@ import '../../images/icons/css/fontello.css'
 const Admin = () => {
 
     return ( 
-        <div>
-            <nav className="nav">
+        <div style={{ width: '100%' }}>
+            <nav className="nav" >
                 <div className='navbar'>
                     <Link to="orders">Zamówienia</Link>
                     <Link to="/admin/productManagement/addNewProduct">Dodaj nowy produkt</Link>

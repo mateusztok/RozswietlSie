@@ -8,4 +8,15 @@ p{
 }
 .table{
     margin-top: 10px;
+    margin-left: 20px;
 }
+
+.name {
+    margin-left: 10px;
+    padding-right: 50px;
+    display: flex;
+    justify-content:space-around;
+    align-items: flex-start;
+}
+
+

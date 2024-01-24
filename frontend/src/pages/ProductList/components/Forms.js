@@ -25,6 +25,7 @@ export const Forms = ({filter, onFilterChange}) => {
           label="Szukaj"
           name="ProductName"
           value={filter.ProductName}
+          sx={{ "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {borderWidth: 1.5 , borderColor: '#000000', color: '#000000'  } }}
           onChange={(e) => handleInputChange('ProductName', e.target.value)}
       />
       </Box>
@@ -37,7 +38,8 @@ export const Forms = ({filter, onFilterChange}) => {
       name="MinPrice"
       value={filter.MinPrice}
       onChange={(e) => handleInputChange('MinPrice', e.target.value)}
-
+      sx={{ "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {borderWidth: 1.5 , borderColor: '#000000',color: '#000000'  } }}
+         
     />
       <TextField
       id="TextInput"
@@ -45,12 +47,15 @@ export const Forms = ({filter, onFilterChange}) => {
       name="MaxPrice"
       value={filter.MaxPrice} 
       onChange={(e) => handleInputChange('MaxPrice', e.target.value)}
+      sx={{ "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {borderWidth: 1.5 , marginLeft:0.1, borderColor: '#000000', color: '#000000'  } }}
     />
     </Box>
     Dostępność
     <Box className="BoxWidth" mr={2}>
-      <FormControl fullWidth >
-        <InputLabel >Dostępność</InputLabel>
+      <FormControl fullWidth sx={{ "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {borderWidth: 1.5 , borderColor: '#000000', color: '#000000'  } }}
+          >
+        <InputLabel 
+        >Dostępność</InputLabel>
         <Select
           label="wybierz jedno z trzech 0, 1 lub 2"
           name="IsAvailable"
@@ -60,9 +65,13 @@ export const Forms = ({filter, onFilterChange}) => {
           <MenuItem value={false}>Niedostępny</MenuItem>
           <MenuItem value={true}>Dostępny</MenuItem>
         </Select>
+        
       </FormControl>
     </Box>
-    <Button variant="outlined" onClick={handleClearFilters}> 
+    <Button 
+     sx={ {borderWidth: 1.5 , marginLeft:0.1, borderColor: '#000000', color: '#000000'  } }
+   
+    variant="outlined" onClick={handleClearFilters}> 
       Wyczyść filtry
     </Button>
   </Box>

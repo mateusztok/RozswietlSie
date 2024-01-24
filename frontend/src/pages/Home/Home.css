@@ -1,0 +1,32 @@
+.logo{
+    margin-top: 18px;
+    width: 50%;
+    text-align: center;
+}
+.image{
+    width: 78%;
+    border-radius: 100%; 
+}
+.main{
+    display: flex;
+    width: 97%;
+}
+.info1{
+    margin-top: 18px;
+    width: 50%;
+    height: 100%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.info1 h4{
+    margin: 10px;
+}
+
+.info1 h2{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}

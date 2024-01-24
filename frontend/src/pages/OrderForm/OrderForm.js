@@ -130,7 +130,7 @@ const OrderForm = () => {
         .finally(() => {
             setIsPaymentProcessing(false);
           });
-    },3000);
+    },6000);
 }
 
     const handleBlikFormButtonClick = () => {
@@ -147,7 +147,7 @@ const OrderForm = () => {
 
     return ( 
         <div className="container">
-            <div className="name">  
+            <div className="name3">  
                 <h1>Wypełnij formularz</h1>
             </div>
             <div className="content">           
@@ -161,7 +161,7 @@ const OrderForm = () => {
                             onChange={(e) => handleInputChange('firstName', e.target.value)}
                         />
                         <label>Nazwisko:</label>
-                        <textarea
+                        <input
                             type="text"
                             name="lastName"
                             value={ order.lastName}

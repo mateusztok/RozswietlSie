@@ -35,7 +35,6 @@ const Navbar = ({ isLoggedIn }) => {
                 <div className='navbar'>
                     <Link to="/">Rozświetl Się</Link>
                     <Link to="/products">Products</Link>
-                    <Link to="/about">O nas</Link>
                     {isAdmin ? <Link to="/admin/orders">Admin</Link>: ""}
                 </div>
                 <div className='icons'>

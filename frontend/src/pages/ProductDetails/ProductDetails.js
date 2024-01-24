@@ -47,7 +47,7 @@ const ProductDetails = () => {
 
     return ( 
         <div className="container">
-            <div className="name">  
+            <div className="name3">  
              <h1>{product.name}</h1>
             </div>
             <div className="content">           
@@ -61,7 +61,7 @@ const ProductDetails = () => {
                     <div className="price">
                         <h2>{product.price} PLN</h2>
                         Dostępność: {product.isAvailable ? 'Dostępny' : 'Niedostępny'}
-                        <button className="addToCartBtn" onClick={handleAddToCart}>
+                        <button className="button1" onClick={handleAddToCart}>
                             Dodaj do koszyka
                         </button>
                         {isAddedToCart && <div className="addedToCartMessage">Produkt został dodany do koszyka!</div>}
